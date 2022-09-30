@@ -35,13 +35,18 @@ for (var i = 0; i < 4; i += 1) {
       var img = document.createElement('img');
       img.src = siteData.picture.large;
 
-      var usernameEle = document.createTextNode(username);
-      var emailEle = document.createTextNode(email);
-      var phoneEle = document.createTextNode(phone);
+      var usernameEle = document.createTextNode('Name: ' + username);
+      var emailEle = document.createTextNode('email: ' + email);
+      var phoneEle = document.createTextNode('phone ' + phone);
 
       textContainer.append(usernameEle);
+      
+      var linebreak = document.createElement('br');
+      textContainer.appendChild(linebreak);
 
       textContainer.append(emailEle);
+      var linebreak = document.createElement('br');
+      textContainer.appendChild(linebreak);
       textContainer.append(phoneEle);
 
       root.appendChild(newContainer);
