@@ -3,7 +3,7 @@
 var siteData;
 var username, email, phone, dob;
 
-for (var i = 0; i < 4; i += 1) {
+for (var i = 0; i < 20; i += 1) {
   fetch('https://randomuser.me/api')
     .then((response) => response.json())
     .then((json) => {
@@ -49,8 +49,13 @@ for (var i = 0; i < 4; i += 1) {
       textContainer.appendChild(linebreak);
       textContainer.append(phoneEle);
 
-      root.appendChild(newContainer);
-
+      var right = document.getElementById('right');
+      var left = document.getElementById('left');
+      if (Math.random() > 0.5) {
+        right.appendChild(newContainer);
+      } else {
+        left.appendChild(newContainer);
+      }
       newContainer.append(img);
       newContainer.append(textContainer);
       //hide dob button
