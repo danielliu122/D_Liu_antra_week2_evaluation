@@ -17,3 +17,7 @@
 .dobButton {
   width: 65px;
 }
+.parentDiv {
+  display: flex;
+  flex-direction: column;
+}

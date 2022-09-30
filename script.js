@@ -37,10 +37,10 @@ for (var i = 0; i < 4; i += 1) {
 
       var usernameEle = document.createTextNode('Name: ' + username);
       var emailEle = document.createTextNode('email: ' + email);
-      var phoneEle = document.createTextNode('phone ' + phone);
+      var phoneEle = document.createTextNode('phone: ' + phone);
 
       textContainer.append(usernameEle);
-      
+
       var linebreak = document.createElement('br');
       textContainer.appendChild(linebreak);
 
