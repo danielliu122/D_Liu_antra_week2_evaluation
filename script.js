@@ -2,8 +2,8 @@
 // get name,email,phone dob for each person
 var siteData;
 var username, email, phone, dob;
-var userList = [];
-for (var i = 0; i < 2; i++) {
+
+for (var i = 0; i < 4; i++) {
   fetch('https://randomuser.me/api')
     .then((response) => response.json())
     .then((json) => {
@@ -15,68 +15,55 @@ for (var i = 0; i < 2; i++) {
         siteData.name.first +
         ' ' +
         siteData.name.last;
-      //console.log(username);
 
       email = siteData.email;
       phone = siteData.phone;
-      dob = siteData.dob.date.substring(0, 10);
+      dob = ' Birthday :    ' + siteData.dob.date.substring(0, 10);
 
-      // console.log(siteData.picture.large);
-      // console.log(siteData.picture.large, username, email, phone, dob);
-      userList.push(siteData.picture.large, username, email, phone, dob);
+      var root = document.getElementById('root');
 
-      //console.log(userList);
+      const textContainer = document.createElement('div');
+      // ✅ Add classes to element
+      textContainer.classList.add('text-container');
 
-      userList.forEach((item) => {
-        if (item.includes('https://')) {
-          console.log('url');
+      // ✅ Create element
+      const newContainer = document.createElement('div');
 
-          var root = document.getElementById('root');
+      // ✅ Add classes to element
+      newContainer.classList.add('flex-container');
 
-          const textContainer = document.createElement('div');
-          // ✅ Add classes to element
-          textContainer.classList.add('text-container');
+      var img = document.createElement('img');
+      img.src = siteData.picture.large;
 
-          // ✅ Create element
-          const newContainer = document.createElement('div');
+      newContainer.append(img);
+      newContainer.append(textContainer);
+      textContainer.append(username, email, phone);
 
-          // ✅ Add classes to element
-          newContainer.classList.add('flex-container');
+      root.appendChild(newContainer);
 
-          var img = document.createElement('img');
-          img.src = item;
+      //hide dob button
+      var dobButton = document.createElement('button');
+      dobButton.classList.add('dobButton');
+      var dobElement = document.createTextNode(dob);
+      dobButton.innerHTML = 'Show DOB';
 
-          newContainer.append(img);
-          newContainer.append(textContainer);
-          textContainer.append(username, email, phone);
+      textContainer.append(dobButton);
 
-          root.appendChild(newContainer);
-
-          //hide dob button
-          var dobButton = document.createElement('button');
-          var dobElement= document.createTextNode(dob);
-          dobButton.innerHTML = 'Show DOB';
-
-          textContainer.append(dobButton);
-          dobButton.addEventListener("click", showHide(dobButton,dob));
-          
-        }
-        console.log(item);
-
+      dobButton.addEventListener('click', () => {
+        textContainer.append(dobElement);
+        showHide(dobButton, dobElement);
       });
-      
+
       // end of fetch
     });
-  console.log(userList);
 }
-//cannot get userList outside of promise
-//console.log(userList);
-function showHide(button,text){
-  if (button.style.display === "none") {
-    button.style.display = "block";
-    text.style.display = "none";
-  } 
-  else {
 
+function showHide(button, text) {
+  if (button.style.display === 'none') {
+    button.style.display = 'block';
+    text.display = 'none';
+  } else {
+    button.style.display = 'none';
+    text.display = 'block';
   }
 }

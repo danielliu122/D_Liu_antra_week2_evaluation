@@ -3,9 +3,16 @@
   flex-wrap: nowrap;
   border: 1px solid blue;
   border-radius: 25px;
-
 }
 .text-container {
   display: flex;
   flex-direction: column;
+}
+.reloadButton {
+  align-content: right;
+
+  position: fixed;
+}
+.dobButton {
+  width: 65px;
 }
