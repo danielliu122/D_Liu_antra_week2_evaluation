@@ -3,7 +3,7 @@
 var siteData;
 var username, email, phone, dob;
 
-for (var i = 0; i < 4; i++) {
+for (var i = 0; i < 4; i += 1) {
   fetch('https://randomuser.me/api')
     .then((response) => response.json())
     .then((json) => {
@@ -35,12 +35,19 @@ for (var i = 0; i < 4; i++) {
       var img = document.createElement('img');
       img.src = siteData.picture.large;
 
-      newContainer.append(img);
-      newContainer.append(textContainer);
-      textContainer.append(username, email, phone);
+      var usernameEle = document.createTextNode(username);
+      var emailEle = document.createTextNode(email);
+      var phoneEle = document.createTextNode(phone);
+
+      textContainer.append(usernameEle);
+
+      textContainer.append(emailEle);
+      textContainer.append(phoneEle);
 
       root.appendChild(newContainer);
 
+      newContainer.append(img);
+      newContainer.append(textContainer);
       //hide dob button
       var dobButton = document.createElement('button');
       dobButton.classList.add('dobButton');
