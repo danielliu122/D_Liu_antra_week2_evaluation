@@ -1,6 +1,6 @@
 .flex-container {
   display: flex;
-  width: 50%;
+  width: 100%;
   flex-wrap: nowrap;
   border: 1px solid blue;
   border-radius: 25px;
