@@ -8,24 +8,8 @@ for (var i = 0; i < 2; i++) {
     .then((response) => response.json())
     .then((json) => {
       //console.log(JSON.stringify(json));
-      siteData = convert(json);
-      console.log(tyepof(siteData));
+      //siteData = JSON.stringify(json);
+      siteData = json;
+      console.log(siteData.results[0]);
     });
 }
-//
-// helper function for flatten json
-const convert = (object) => {
-  if (!object || typeof object !== 'object') return object;
-  if (Array.isArray(object)) {
-    return object.every((v) => typeof v === 'string')
-      ? object.join()
-      : Object.assign({}, ...object.map(convert));
-  }
-  return Object.fromEntries(
-    Object.entries(object).flatMap(([k, v]) =>
-      k === '$'
-        ? Object.entries(v).map(([k, v]) => [k, convert(v)])
-        : [[k, convert(v)]]
-    )
-  );
-};
