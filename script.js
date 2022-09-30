@@ -30,6 +30,21 @@ for (var i = 0; i < 2; i++) {
       userList.forEach((item) => {
         if (item.includes('https://')) {
           console.log('url');
+
+          var root = document.getElementById('root');
+          // ✅ Create element
+          const newContainer = document.createElement('div');
+
+          // ✅ Add classes to element
+          newContainer.classList.add('flex-container');
+
+          var img = document.createElement('img');
+          img.src = item;
+
+          newContainer.append(img);
+          newContainer.append(username, email, phone, dob);
+
+          root.appendChild(newContainer);
         }
         console.log(item);
       });
