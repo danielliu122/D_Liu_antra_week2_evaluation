@@ -9,8 +9,14 @@ for (var i = 0; i < 2; i++) {
     .then((response) => response.json())
     .then((json) => {
       siteData = json.results[0];
-      userName = siteData.name;
-      console.log(siteData.name);
+
+      username =
+        siteData.name.title +
+        ' ' +
+        siteData.name.first +
+        ' ' +
+        siteData.name.last;
+      console.log(username);
 
       email = siteData.email;
       phone = siteData.phone;
