@@ -3,5 +3,9 @@
   flex-wrap: nowrap;
   border: 1px solid blue;
   border-radius: 25px;
-  text-align: center;
+
+}
+.text-container {
+  display: flex;
+  flex-direction: column;
 }

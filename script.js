@@ -32,6 +32,11 @@ for (var i = 0; i < 2; i++) {
           console.log('url');
 
           var root = document.getElementById('root');
+
+          const textContainer = document.createElement('div');
+          // ✅ Add classes to element
+          textContainer.classList.add('text-container');
+
           // ✅ Create element
           const newContainer = document.createElement('div');
 
@@ -42,16 +47,36 @@ for (var i = 0; i < 2; i++) {
           img.src = item;
 
           newContainer.append(img);
-          newContainer.append(username, email, phone, dob);
+          newContainer.append(textContainer);
+          textContainer.append(username, email, phone);
 
           root.appendChild(newContainer);
+
+          //hide dob button
+          var dobButton = document.createElement('button');
+          var dobElement= document.createTextNode(dob);
+          dobButton.innerHTML = 'Show DOB';
+
+          textContainer.append(dobButton);
+          dobButton.addEventListener("click", showHide(dobButton,dob));
+          
         }
         console.log(item);
-      });
 
+      });
+      
       // end of fetch
     });
   console.log(userList);
 }
 //cannot get userList outside of promise
 //console.log(userList);
+function showHide(button,text){
+  if (button.style.display === "none") {
+    button.style.display = "block";
+    text.style.display = "none";
+  } 
+  else {
+
+  }
+}
